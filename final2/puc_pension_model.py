@@ -88,14 +88,19 @@ def puc_pension_benefit():
         "years_of_service": years_of_service,
     }
     data = last_inputs
-    liability = compute_puc_without_input(data)
+    liability, annual_benefit = compute_puc_without_input(
+        data, include_benefit=True
+    )
 
-    print(f"\nAccrued liability at age {current_age}: {liability:.4f}")
+    print(
+        f"\nAccrued liability at age {current_age}: {liability:.2f} "
+        f"(annual retirement benefit: {annual_benefit:.2f})"
+    )
     return liability
 
 # Core Calulations
 
-def compute_puc_without_input(data):
+def compute_puc_without_input(data, include_benefit=False):
     current_salary = data["current_salary"]
     retirement_age = data["retirement_age"]
     current_age = data["current_age"]
@@ -125,6 +130,8 @@ def compute_puc_without_input(data):
         * survival_prob
         * annuity
     )
+    if include_benefit:
+        return accrued_liability, base_benefit
     return accrued_liability
 
 

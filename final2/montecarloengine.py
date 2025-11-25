@@ -36,7 +36,7 @@ def mpi_monte_carlo(method, base_inputs, n_trials):
 	trials_per_rank = n_trials // size
 
 	if rank == 0:
-		print(f"\nRunning {n_trials} Monte Carlo simulations across {size} MPI ranks...")
+		print(f"\nRunning {n_trials} Monte Carlo simulations across {size} processes...")
 		
 
 	#run local simulations
@@ -54,11 +54,11 @@ def mpi_monte_carlo(method, base_inputs, n_trials):
 
 
 		return {
-			"mean":round(float(np.mean(all_results)), 2),
-			"std":round(float(np.std(all_results)), 2),
-			"min":round(float(np.min(all_results)), 2),
-			"max":round(float(np.max(all_results)), 2),
-			"count":len(all_results)
+			"Expected Value":round(float(np.mean(all_results)), 2),
+			"Standard Deviation":round(float(np.std(all_results)), 2),
+			"Min Observed Accrued Liability":round(float(np.min(all_results)), 2),
+			"Max Observed Accrued Liability":round(float(np.max(all_results)), 2),
+			"Number of Trials":len(all_results)
 		}
 	
 	return None

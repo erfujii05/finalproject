@@ -61,7 +61,7 @@ def run_mc_mode():
 	results = mpi_monte_carlo(method, data, n_trials)
 	
 	if rank == 0:
-		print("\nMonte Carlo Results\n")
+		print("\nMonte Carlo Accrued Liability Results\n")
 		for k, v in results.items():
 			print(f"{k}: {v}")
 

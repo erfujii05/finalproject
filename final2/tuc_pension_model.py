@@ -102,12 +102,17 @@ def tuc_pension_benefit():
         "salary_growth": 0.0
     }
     data = last_inputs
-    liability = compute_tuc_without_input(data)
+    liability, annual_benefit = compute_tuc_without_input(
+        data, include_benefit=True
+    )
 
-    print(f"\nAccrued liability at age {current_age}: {liability:.4f}")
+    print(
+        f"\nAccrued liability at age {current_age}: {liability:.2f} "
+        f"(annual retirement benefit: {annual_benefit:.2f})"
+    )
     return liability
 # Core Calculations
-def compute_tuc_without_input(data):
+def compute_tuc_without_input(data, include_benefit=False):
     # Extract inputs
     salary1ago = data["salary1ago"]
     salary2ago = data["salary2ago"]
@@ -144,9 +149,10 @@ def compute_tuc_without_input(data):
         annuity
     )
 
+    if include_benefit:
+        return accrued_liability, base_benefit
     return accrued_liability
 
 
 if __name__ == "__main__":
     tuc_pension_benefit()
-
