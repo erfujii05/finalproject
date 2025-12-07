@@ -44,7 +44,7 @@ def tuc_pension_benefit():
             print("Accrual rate expects a positive non-zero integer")
     while True:
         try:
-            salary1ago = float(input("\nEnter Salary one year ago:\n"))
+            salary1ago = int(input("\nEnter Salary one year ago:\n"))
             if salary1ago <= 0:
                 print("Salary one year ago expects a non-negative integer")
                 continue
@@ -53,7 +53,7 @@ def tuc_pension_benefit():
             print("Salary one year ago expects a non-negative integer")
     while True:
         try:
-            salary2ago = float(input("\nEnter Salary two years ago:\n"))
+            salary2ago = int(input("\nEnter Salary two years ago:\n"))
             if salary2ago <= 0:
                 print("Salary two years ago expects a non-negative integer")
                 continue
@@ -62,7 +62,7 @@ def tuc_pension_benefit():
             print("Salary two years ago expects a non-negative integer")
     while True:
         try:
-            salary3ago = float(input("\nEnter Salary three years ago:\n"))
+            salary3ago = int(input("\nEnter Salary three years ago:\n"))
             if salary3ago <= 0:
                 print("Salary three years ago expects a non-negative integer")
                 continue
